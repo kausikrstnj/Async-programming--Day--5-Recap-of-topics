@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dogs & Cats</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+</head>
+
+<body>
+
+    <div class="container">
+        <br>
+        <br>
+        <br>
+        <h4><b>Dogs</b>, scientifically known as Canis lupus familiaris, have been companions to humans for thousands of
+            years.
+            Here are a
+            few interesting facts about these wonderful animals:
+        </h4>
+        <br>
+        <h4><b>Diverse Breeds:</b> There are hundreds of different dog breeds, each with
+            its own unique
+            characteristics,
+            size, and
+            temperament. These breeds are often categorized into groups, such as working dogs, toy dogs, herding dogs,
+            and more.</h4>
+
+        <br>
+
+        <h4>
+            <b>Loyal Companionship:</b> Dogs are renowned for their loyalty and companionship. They have an innate
+            ability to
+            form strong
+            bonds with their human families, providing emotional support, companionship, and often serving as therapy
+            animals.
+        </h4>
+
+        <br>
+        <h4>
+            <b>Health Benefits:</b> Interacting with dogs has been linked to numerous health benefits for humans. The
+            companionship
+            of a
+            dog can reduce stress, lower blood pressure, and increase physical activity through activities like walking
+            and
+            playing.
+        </h4>
+        <br>
+        <h4>
+            Whether as working partners, loyal friends, or beloved family members, dogs continue to play an integral
+            role in the
+            lives of people around the world. Their diverse qualities and the unique bonds they form with humans make
+            them truly
+            exceptional animals.
+        </h4>
+        <br>
+
+        <h2>Click the below button to generate a random Dog image.</h2>
+        <br>
+        <button type="button" id="generateDogImage" class="btn btn-primary">Generate</button>
+        <br>
+        <br>
+        <div class="dogContainer" id="dogImageContainer">
+        </div>
+        <br>
+        <br>
+
+        <h4>
+            <b>Cats</b> ,scientifically known as Felis catus, have captivated humans for thousands of years with their
+            mysterious and independent
+            nature. Here are a few interesting facts about these fascinating felines.
+        </h4>
+        <br>
+        <h4>
+            <b>Independent Nature:</b> Cats are known for their independent and solitary behavior. Unlike some social
+            animals, cats are often content being
+            alone and can entertain themselves for long periods.
+        </h4>
+        <br>
+        <h4>
+            <b>Variety of Breeds:</b> Just like dogs, there is a wide variety of cat breeds, each with its own
+            distinctive characteristics, including size,
+            coat pattern, and personality traits. From the elegant Siamese to the fluffy Maine Coon, there is a cat
+            breed to suit
+            almost any preference.
+        </h4>
+        <br>
+        <h4>
+            <b>Cleanliness:</b> Cats are known for their cleanliness, and they are meticulous about using a litter box.
+            This behavior makes them
+            relatively easy to care for in terms of grooming, especially compared to some other pets.
+        </h4>
+        <br>
+        <h4>Whether as playful kittens, graceful adults, or wise seniors, cats bring a unique charm and joy to the lives
+            of those
+            who appreciate their enigmatic and delightful qualities.</h4>
+        <br>
+        <h2>Click the below button to generate a random Cat Facts.</h2>
+        <br>
+        <button type="button" id="generateCatFact" class="btn btn-primary">Generate</button>
+        <br>
+        <br>
+        <div class="dogContainer" id="dogImageContainer">
+        </div>
+        <br>
+        <br>
+
+        <br>
+        <div class="dogContainer" id="catFactContainer">
+        </div>
+        <br>
+        <br>
+        <br>
+    </div>
+
+    <script>
+        function getDogImage() {
+            fetch('https://dog.ceo/api/breeds/image/random')
+                .then(response => response.json())
+                .then(data => {
+                    const dogImage = document.createElement('img');
+                    dogImage.src = data.message;
+                    document.getElementById('dogImageContainer').innerHTML = '';
+                    document.getElementById('dogImageContainer').appendChild(dogImage);
+                })
+                .catch(error => {
+                    console.error('Error fetching dog image:', error);
+                });
+
+
+        }
+        function getCatFacts() {
+            fetch('https://meowfacts.herokuapp.com/')
+                .then(response => response.json())
+                .then(data => {
+                    const catFact = document.createElement('h3');
+                    catFact.textContent = data.data;
+                    document.getElementById('catFactContainer').innerHTML = '';
+                    document.getElementById('catFactContainer').appendChild(catFact);
+                })
+                .catch(error => {
+                    console.error('Error fetching dog image:', error);
+                });
+        }
+
+        let generateDogImage = document.getElementById('generateDogImage');
+        generateDogImage.addEventListener('click', getDogImage);
+
+        let generateCatFact = document.getElementById('generateCatFact');
+        generateCatFact.addEventListener('click', getCatFacts);
+
+    </script>
+    <script src="https://app.zenclass.in/sheets/v1/js/zen/suite/bundle.js"></script>
+</body>
+
+</html>
